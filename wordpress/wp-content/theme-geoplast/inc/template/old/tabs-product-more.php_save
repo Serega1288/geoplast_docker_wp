@@ -1,0 +1,40 @@
+<?php include 'block-option.php'; ?>
+
+<section
+    <?php if( get_sub_field('id_block') ) : ?>
+        id="<?php the_sub_field('id_block'); ?>"
+    <?php else : ?>
+        id="section-<?php echo $args; ?>"
+    <?php endif; ?>
+    class="section top-category-product">
+    <div class="container">
+        <?php
+        $title = get_sub_field('title');
+        if ($title) : ?>
+            <div class="block-title style-3">
+                <?php echo $title; ?>
+            </div>
+        <?php endif; ?>
+        <div class="row list">
+            <?php while( have_rows('list') ) : the_row();
+                $type_shortcode = get_sub_field('type-shortcode');
+                $code = '';
+                if ( $type_shortcode == '1' ) :
+                    $code = '[products limit="4" columns="4" on_sale="true"]';
+                elseif( $type_shortcode == '2' ) :
+                    $code = '[products limit="4" columns="4" best_selling="true"]';
+                elseif( $type_shortcode == '3' ) :
+                    $code = '[products limit="4" columns="4" orderby="id" order="DESC"]';
+                elseif( $type_shortcode == '4' ) :
+                    $code = '[products limit="4" columns="4" orderby="id" order="DESC"]';
+                endif;
+                ?>
+                ?>
+
+            <?php endwhile; ?>
+        </div>
+        <div class="wrap-btn text-center">
+
+        </div>
+    </div>
+</section>

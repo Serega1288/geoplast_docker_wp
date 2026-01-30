@@ -1,0 +1,12 @@
+<svg id='arrow' viewBox="0 0 8 16" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_258_12301)">
+        <path d="M1.67188 12.6602L6.33191 8.00012L1.67188 3.34009"
+            stroke-width="2.33002" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <defs>
+        <clipPath id="clip0_258_12301">
+            <rect width="8" height="16"
+                transform="matrix(1 1.74846e-07 1.74846e-07 -1 0 16)" />
+        </clipPath>
+    </defs>
+</svg>

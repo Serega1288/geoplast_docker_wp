@@ -1,0 +1,87 @@
+@use "../mixins" as *;
+
+body {
+  font-family: Gotham;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 140%;
+  color: var(--colors);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--greenb);
+}
+
+p {
+  margin-bottom: 1.4rem;
+  line-height: 140%;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.ml-0 { margin-left: 0 !important; }
+.mr-0 { margin-right: 0 !important; }
+
+.fw300 {
+  font-weight: 300;
+}
+.fw400 {
+  font-weight: 400;
+}
+.fw500 {
+  font-weight: 500;
+}
+.fw700 {
+  font-weight: 700;
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.m-left-auto {
+  margin-left: auto !important;
+}
+.m-right-auto {
+  margin-right: auto !important;
+}
+
+.ts-56 { font-size: 5.6rem; }
+.ts-40 { font-size: 4rem; }
+.ts-28 { font-size: 2.8rem; }
+.ts-24 { font-size: 2.4rem; }
+.ts-20 { font-size: 2rem; }
+.ts-18 { font-size: 1.8rem; }
+.ts-16 { font-size: 1.6rem; }
+.ts-14 { font-size: 1.4rem; }
+.ts-12 { font-size: 1.2rem; }
+
+
+@include max-width(sm) {
+  .ts-sm-56 { font-size: 5.6rem; }
+  .ts-sm-40 { font-size: 4rem; }
+  .ts-sm-32 { font-size: 3.2rem; }
+  .ts-sm-28 { font-size: 2.8rem; }
+  .ts-sm-24 { font-size: 2.4rem; }
+  .ts-sm-20 { font-size: 2rem; }
+  .ts-sm-18 { font-size: 1.8rem; }
+  .ts-sm-16 { font-size: 1.6rem; }
+  .ts-sm-14 { font-size: 1.4rem; }
+  .ts-sm-12 { font-size: 1.2rem; }
+}
+
+.color-white-op {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.text {
+  color: var(--body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+}

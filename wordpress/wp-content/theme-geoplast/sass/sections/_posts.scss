@@ -1,0 +1,187 @@
+@use "../mixins" as *;
+
+.posts {
+  padding-top: 6rem;
+  //padding-bottom: 2rem;
+  @include max-width(sm) {
+    padding-top: 3.2rem;
+  }
+}
+.post {
+  margin-bottom: 4rem;
+  .wrap-img {
+    border-radius: 2.4rem;
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+  }
+  .title {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    line-height: 1.2;
+    color: var(--colors);
+    text-decoration: none;
+    display: block;
+  }
+  .date {
+    color: var(--body);
+    font-size: 1.3rem;
+    @include max-width(sm) {
+      font-size: 1.2rem;
+    }
+  }
+  .text {
+    color: var(--o8colors);
+    margin-bottom: 1.5rem;
+  }
+  &.post-style-1 {
+    @include max-width(sm) {
+      margin-bottom: 2.4rem;
+    }
+  }
+  &.post-style-2 {
+    border-radius: 2.4rem;
+    background-color: #fff;
+    padding: 2.4rem;
+    @include max-width(sm) {
+      padding: 1.6rem;
+    }
+    .wrap-img {
+      margin-bottom: 0;
+      @include max-width(md) {
+        margin-bottom: 3rem;
+      }
+      @include max-width(sm) {
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+  .wrap-text {
+    max-width: calc(50rem + 3.2rem);
+    margin-left: auto;
+    margin-right: auto;
+    @include max-width(md) {
+      max-width: 100%;
+    }
+  }
+}
+
+
+.pagination {
+  margin-top: 1rem;
+}
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  & > *:not(.dots) {
+    height: 5rem;
+    width: 5rem;
+    min-width: 5rem;
+    border-radius: 50%;
+    color: var(--colors);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borders);
+    background-color: rgba(0,0,0,0);
+    @include max-width(sm) {
+      height: 4.4rem;
+      width: 4.4rem;
+      min-width: 4.4rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    &:hover, &:focus {
+      background-color: var(--colors);
+      border-color: var(--colors);
+      color: #fff;
+    }
+  }
+  .next, .prev {
+    background-color: var(--lgreen);
+    border-color: var(--lgreen);
+    background-position: center center;
+    background-repeat: no-repeat;
+    &:hover, &:focus {
+      background-image: url("../image/svg/lite-arrow-white.svg");
+    }
+  }
+  .next {
+    background-image: url("../image/svg/lite-arrow-green.svg");
+  }
+  .prev {
+    background-color: var(--lgray);
+    transform: rotate(180deg);
+    background-image: url("../image/svg/lite-arrow-blue.svg");
+  }
+  [aria-current="page"] {
+    background-color: var(--colors);
+    border-color: var(--colors);
+    color: #fff;
+  }
+}
+
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  & > *:not(.dots) {
+    height: 5rem;
+    width: 5rem;
+    min-width: 5rem;
+    border-radius: 50%;
+    color: var(--colors);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borders);
+    background-color: rgba(0,0,0,0);
+    @include max-width(sm) {
+      height: 4.4rem;
+      width: 4.4rem;
+      min-width: 4.4rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    &:hover, &:focus {
+      background-color: var(--colors);
+      border-color: var(--colors);
+      color: #fff;
+    }
+  }
+  .next, .prev {
+    background-color: var(--lgreen);
+    border-color: var(--lgreen);
+    background-position: center center;
+    background-repeat: no-repeat;
+    &:hover, &:focus {
+      background-image: url("../image/svg/lite-arrow-white.svg");
+    }
+  }
+  .next {
+    background-image: url("../image/svg/lite-arrow-green.svg");
+  }
+  .prev {
+    background-color: var(--lgray);
+    transform: rotate(180deg);
+    background-image: url("../image/svg/lite-arrow-blue.svg");
+  }
+  [aria-current="page"] {
+    background-color: var(--colors);
+    border-color: var(--colors);
+    color: #fff;
+  }
+}
