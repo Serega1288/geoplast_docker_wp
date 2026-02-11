@@ -1,16 +1,14 @@
 <?php
-// Основні поля
 $products_title = get_field('catalogue_sec_title');
 
 $p_btn1_text = get_field('catalogue_button_text_1');
-$p_btn1_link = get_field('catalogue_button_link_1'); // URL
+$p_btn1_link = get_field('catalogue_button_link_1'); 
 
 $p_btn2_text = get_field('catalogue_button_text_2');
-$p_btn2_link_obj = get_field('catalogue_button_link_2'); // Post Object
+$p_btn2_link_obj = get_field('catalogue_button_link_2');
 
 $p_btn2_url = home_url('/catalogue');
 
-// Кнопка 2 (Post Object -> URL)
 if ($p_btn2_link_obj && is_object($p_btn2_link_obj)) {
 	$p_btn2_url = get_permalink($p_btn2_link_obj->ID);
 }
@@ -30,24 +28,21 @@ if ($p_btn2_link_obj && is_object($p_btn2_link_obj)) {
 
 			while (have_rows('catalogue_sec_list')): the_row();
 
-				$img_data = get_sub_field('catalogue_sec_image'); // image
+				$img_data = get_sub_field('catalogue_sec_image'); 
 				$prefix   = get_sub_field('first_catalogue_item');
 				$suffix   = get_sub_field('second_catalogue_item');
 				$desc     = get_sub_field('catalogue_description');
 
-				$link_obj = get_sub_field('catalogue_link'); // Post Object
+				$link_obj = get_sub_field('catalogue_link'); 
 
-				/* IMAGE */
 				$img_url = '';
 				if (is_array($img_data) && isset($img_data['url'])) {
 					$img_url = $img_data['url']; // array
 				} elseif (is_numeric($img_data)) {
-					$img_url = wp_get_attachment_url($img_data); // ID
+					$img_url = wp_get_attachment_url($img_data);
 				} elseif (is_string($img_data)) {
-					$img_url = $img_data; // URL
+					$img_url = $img_data;
 				}
-
-				/* LINK (Post Object -> URL) */
 				$link = '';
 				if ($link_obj && is_object($link_obj)) {
 					$link = get_permalink($link_obj->ID);

@@ -4,6 +4,7 @@ add_action('acf/init', 'my_acf_init');
 add_filter('wpcf7_autop_or_not', '__return_false');
 function my_acf_init()
 {
+	
 	if (function_exists('acf_register_block_type')) {
 		acf_register_block_type(array(
 			'name'              => 'statistic-block',

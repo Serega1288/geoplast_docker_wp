@@ -14,5 +14,3 @@ require_once get_template_directory() . '/inc/theme-admin.php';
 // За потреби розкоментуй ці файли, коли вони будуть готові:
 require_once get_template_directory() . '/inc/acf.php';
 require_once get_template_directory() . '/inc/helpers.php';
-
-
