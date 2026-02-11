@@ -1,0 +1,15 @@
+{
+  "name": "geoplast_docker_wp-main",
+  "version": "1.0.0",
+  "description": "WordPress Theme Build",
+  "main": "index.js",
+  "scripts": {
+    "build-img": "if not exist wordpress\\wp-content\\themes\\theme-geoplast\\assets\\img mkdir wordpress\\wp-content\\themes\\theme-geoplast\\assets\\img && xcopy /E /I /Y wordpress\\wp-content\\themes\\src\\img\\* wordpress\\wp-content\\themes\\theme-geoplast\\assets\\img\\",
+    "build-video": "if not exist wordpress\\wp-content\\themes\\theme-geoplast\\assets\\video mkdir wordpress\\wp-content\\themes\\theme-geoplast\\assets\\video && xcopy /E /I /Y wordpress\\wp-content\\themes\\src\\video\\* wordpress\\wp-content\\themes\\theme-geoplast\\assets\\video\\",
+    "build-sass": "sass wordpress/wp-content/themes/src/sass/style.sass:wordpress/wp-content/themes/theme-geoplast/assets/css/styles.css --no-source-map -q",
+    "build": "npm run build-img && npm run build-video && npm run build-sass",
+    "watch": "sass --watch wordpress/wp-content/themes/src/sass/style.sass:wordpress/wp-content/themes/theme-geoplast/assets/css/styles.css -q"
+  },
+  "author": "Volodymyr",
+  "license": "ISC"
+}

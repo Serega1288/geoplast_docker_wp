@@ -1,0 +1,46 @@
+services:
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wpuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wppassword}
+      TZ: ${TZ:-Europe/Kyiv}
+    volumes:
+      - db_data:/var/lib/mysql
+    labels:
+      com.project: ${COMPOSE_PROJECT_NAME:-wp}
+
+  wordpress:
+    image: wordpress:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "${WP_PORT:-8000}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wpuser}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-wppassword}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-wordpress}
+      UPLOAD_LIMIT: ${UPLOAD_LIMIT:-128M}
+      PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT:-256M}
+      TZ: ${TZ:-Europe/Kyiv}
+    volumes:
+      # ✅ монтуємо тему за назвою з env
+      - ./wordpress/wp-content/themes/${THEMES_DIR}:/var/www/html/wp-content/themes/${THEMES_DIR}
+
+      # (опційно) якщо хочеш мати плагіни в репі і теж монтувати
+      # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
+
+      # ✅ твій php ini
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/90-uploads.ini:ro
+    labels:
+      com.project: ${COMPOSE_PROJECT_NAME:-wp}
+
+volumes:
+  db_data:
+    name: geoplast_db_data
+    external: true
