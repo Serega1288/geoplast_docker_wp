@@ -75,26 +75,14 @@
 			<nav class="navigation nav">
 				<ul class="navigation_menu">
 					<li class="cancel_li"><a class="cancel" href="#">X</a></li>
-					<li><a href="<?php echo home_url(); ?>">Головна</a></li>
-
 					<?php
-					$menu_items = [
-						'info' => 'Рішення під ключ',
-						'services' => 'Сервіс та гарантія',
-						'catalogue' => 'Термопластавтомати',
-						'news' => 'Новини',
-						'contacts' => 'Контакти',
-					];
-
-					foreach ($menu_items as $slug => $title) :
-						$page = get_page_by_path($slug);
-						if (!$page) {
-							$page = get_page_by_title($title);
-						}
-						$link = $page ? get_permalink($page->ID) : '#';
+					wp_nav_menu([
+						'theme_location' => 'header-menu-1',
+						'container'      => false,
+						'items_wrap'     => '%3$s',
+						'fallback_cb'    => false,
+					]);
 					?>
-						<li><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></li>
-					<?php endforeach; ?>
 
 					<li class="mobile_btn"><a class="cta connect_cta transparent_cta" href="#">Звʼязатися з нами</a></li>
 				</ul>

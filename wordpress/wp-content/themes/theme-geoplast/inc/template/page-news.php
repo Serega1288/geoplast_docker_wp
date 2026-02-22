@@ -1,7 +1,9 @@
-<section class="news wrapper pt_100" <?php if( get_sub_field('id_block') ) echo 'id="' . esc_attr(get_sub_field('id_block')) . '"'; ?>>
+<section class="news wrapper pt_100" <?php if (get_sub_field('id_block')) echo 'id="' . esc_attr(get_sub_field('id_block')) . '"'; ?>>
 	<?php
 	$dynamic_title = '';
 	$dynamic_button = null;
+	$custom_page_link = null; 
+
 	if (have_rows('block_news')) :
 		while (have_rows('block_news')) : the_row();
 			if (get_row_layout() == 'title_news') :
@@ -10,13 +12,18 @@
 			if (get_row_layout() == 'button_news') :
 				$dynamic_button = get_sub_field('editor_button');
 			endif;
+			if (get_row_layout() == 'page_news') :
+				$custom_page_link = get_sub_field('link_one_page');
+			endif;
 
 		endwhile;
 	endif;
 	?>
+
 	<h2 class="animate fade-up show" data-delay="100">
 		<?php echo $dynamic_title ? esc_html($dynamic_title) : 'Останні новини'; ?>
 	</h2>
+
 	<article class="grid col_3 gap_20">
 		<?php
 		$args = array(
@@ -56,12 +63,20 @@
 			wp_reset_postdata(); ?>
 		<?php endif; ?>
 	</article>
+
 	<div class="button_container flex flex-center gap_20 pt_60">
-		<?php if ($dynamic_button) : ?>
+		<?php
+		if ($dynamic_button) : ?>
 			<a class="cta fill_cta" href="<?php echo esc_url($dynamic_button['url']); ?>" target="<?php echo esc_attr($dynamic_button['target'] ?: '_self'); ?>">
 				<?php echo esc_html($dynamic_button['title']); ?>
 			</a>
-		<?php else : ?>
+		<?php
+		elseif ($custom_page_link) : ?>
+			<a class="cta fill_cta" href="<?php echo esc_url($custom_page_link['url']); ?>" target="<?php echo esc_attr($custom_page_link['target'] ?: '_self'); ?>">
+				<?php echo esc_html($custom_page_link['title'] ?: 'Усі новини'); ?>
+			</a>
+		<?php
+		else : ?>
 			<a class="cta fill_cta" href="<?php echo get_post_type_archive_link('post'); ?>">Усі новини</a>
 		<?php endif; ?>
 	</div>

@@ -1,5 +1,8 @@
-<section class="contact_container wrapper pt_100" id="contacts" <?php if( get_sub_field('id_block') ) echo 'id="' . esc_attr(get_sub_field('id_block')) . '"'; ?>>
+<section class="contact_container wrapper pt_100" id="contacts" <?php if (get_sub_field('id_block')) echo 'id="' . esc_attr(get_sub_field('id_block')) . '"'; ?>>
 	<?php
+	$reverse_ver = get_sub_field('reverse_block_ver');
+	$reverse_class = $reverse_ver ? 'flex-row-reverse' : '';
+
 	if (have_rows('content_block')) :
 		while (have_rows('content_block')) : the_row();
 			if (get_row_layout() == 'contact_title') :
@@ -8,7 +11,7 @@
 			<?php endif; ?>
 	<?php endwhile;
 	endif; ?>
-	<div class="flex-between wrap_768">
+	<div class="flex-between wrap_768 <?php echo $reverse_class; ?>">
 		<div class="contacts flex column flex-center animate fade-left" data-delay="100">
 			<?php
 			if (have_rows('content_block')) :
@@ -18,31 +21,44 @@
 							while (have_rows('content_full')) : the_row();
 								if (get_row_layout() == 'con_block') :
 									$mob_title   = get_sub_field('mobile_title');
-									$tel1        = get_sub_field('tel_1');
-									$tel2        = get_sub_field('tel_2');
+									$tels = array_filter([get_sub_field('tel_1'), get_sub_field('tel_2'), get_sub_field('tel_3'), get_sub_field('tel_4')]);
+
 									$mail_title  = get_sub_field('poshta_title');
-									$email       = get_sub_field('editor_email');
+									$emails = array_filter([get_sub_field('editor_email'), get_sub_field('editor_email_1')]);
+
 									$adr_title   = get_sub_field('adress_title');
-									$adr_text    = get_sub_field('adress_text');
+									$addresses = array_filter([get_sub_field('adress_text'), get_sub_field('adress_text_1')]);
+
 									$inst_link   = get_sub_field('inst_icon');
 									$yt_link     = get_sub_field('youtube_icon');
 									$tg_link     = get_sub_field('telegram_icon');
 			?>
-									<div class="sales">
-										<h3><?php echo esc_html($mob_title ?: 'Відділ продажу та консультація'); ?></h3>
-										<?php if ($tel1): ?><p><a href="tel:<?php echo preg_replace('/\D/', '', $tel1); ?>"><?php echo esc_html($tel1); ?></a></p><?php endif; ?>
-										<?php if ($tel2): ?><p><a href="tel:<?php echo preg_replace('/\D/', '', $tel2); ?>"><?php echo esc_html($tel2); ?></a></p><?php endif; ?>
-									</div>
-									<div class="mail">
-										<h3><?php echo esc_html($mail_title ?: 'Електронна пошта'); ?></h3>
-										<?php if ($email): ?><p><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></p><?php endif; ?>
-									</div>
-									<div class="adress">
-										<h3><?php echo esc_html($adr_title ?: 'Адреса'); ?></h3>
-										<p></p>
-										<address><?php echo esc_html($adr_text ?: 'м. Хмельницький, вул. 3-я Нова, 70/1'); ?></address>
-										<p></p>
-									</div>
+									<?php if (!empty($tels)) : ?>
+										<div class="sales">
+											<h3><?php echo esc_html($mob_title ?: 'Відділ продажу та консультація'); ?></h3>
+											<?php foreach ($tels as $tel) : ?>
+												<p><a href="tel:<?php echo preg_replace('/\D/', '', $tel); ?>"><?php echo esc_html($tel); ?></a></p>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?>
+
+									<?php if (!empty($emails)) : ?>
+										<div class="mail">
+											<h3><?php echo esc_html($mail_title ?: 'Електронна пошта'); ?></h3>
+											<?php foreach ($emails as $email) : ?>
+												<p><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></p>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?>
+
+									<?php if (!empty($addresses)) : ?>
+										<div class="adress">
+											<h3><?php echo esc_html($adr_title ?: 'Адреса'); ?></h3>
+											<?php foreach ($addresses as $adr) : ?>
+												<address><?php echo esc_html($adr); ?></address>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?>
 									<div class="social">
 										<h3>Ми у соцмережах</h3>
 										<div class="flex items-center gap_20">

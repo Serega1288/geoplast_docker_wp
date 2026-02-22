@@ -13,7 +13,6 @@ $news_query = new WP_Query([
     <h1 class="page_h1 animate fade-up show" style="color: #ED6B27;" data-delay="100">
         <?php echo esc_html($title); ?>
     </h1>
-
     <section class="news_cards">
         <div class="grid col_3 gap_20">
             <?php if ($news_query->have_posts()) : while ($news_query->have_posts()) : $news_query->the_post(); ?>

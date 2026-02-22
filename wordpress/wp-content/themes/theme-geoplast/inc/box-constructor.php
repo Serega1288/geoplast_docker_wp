@@ -58,9 +58,9 @@ while (have_rows('constructor')) : the_row();
 			get_template_part('inc/template/section-info');
 		} ?>
 	<?php endif; ?>
-	<?php if (get_row_layout() == 'section_image-title'): ?>
+	<?php if (get_row_layout() == ''): ?>
 		<?php if (!$disable) {
-			get_template_part('inc/template/section-image-title');
+			get_template_part('inc/template/');
 		} ?>
 	<?php endif; ?>
 	<?php if (get_row_layout() == 'section_advanteges'): ?>

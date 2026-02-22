@@ -1,7 +1,5 @@
 <?php 
-// Перевіряємо, чи ми на сторінці "Новини"
 $is_news_page = is_page('news') || is_home() || is_archive();
-// Отримуємо посилання з ACF
 $link_data = get_sub_field('link_one_page'); 
 ?>
 
@@ -19,7 +17,6 @@ $link_data = get_sub_field('link_one_page');
                     <img src="<?php echo get_template_directory_uri(); ?>/img/new_page.jpg" alt="">
                 <?php endif; ?>
             </picture>
-
             <div class="flex-between items-center news_text">
                 <p class="flag">
                     <?php
@@ -54,7 +51,6 @@ $link_data = get_sub_field('link_one_page');
             </h2>
         </figcaption>
     </figure>
-
 <?php else : ?>
     <figure class="new_card animate fade-up show" data-delay="100">
         <figcaption>
