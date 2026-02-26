@@ -58,9 +58,9 @@ while (have_rows('constructor')) : the_row();
 			get_template_part('inc/template/section-info');
 		} ?>
 	<?php endif; ?>
-	<?php if (get_row_layout() == ''): ?>
+	<?php if (get_row_layout() == 'block_section_info'): ?>
 		<?php if (!$disable) {
-			get_template_part('inc/template/');
+			get_template_part('inc/template/block-section-info');
 		} ?>
 	<?php endif; ?>
 	<?php if (get_row_layout() == 'section_advanteges'): ?>
@@ -108,14 +108,14 @@ while (have_rows('constructor')) : the_row();
 			get_template_part('inc/template/section-description');
 		} ?>
 	<?php endif; ?>
-	<?php if (get_row_layout() == ''): ?>
+	<?php if (get_row_layout() == 'main_product_block'): ?>
 		<?php if (!$disable) {
-			get_template_part('inc/template/');
+			get_template_part('inc/template/main-product-block');
 		} ?>
 	<?php endif; ?>
-	<?php if (get_row_layout() == ''): ?>
+	<?php if (get_row_layout() == 'section_slider'): ?>
 		<?php if (!$disable) {
-			get_template_part('inc/template/');
+			get_template_part('inc/template/section-slider');
 		} ?>
 	<?php endif; ?>
 	<?php if (get_row_layout() == ''): ?>

@@ -1646,6 +1646,22 @@
  	background: #F6F6F6;
  }
 
+ /* .table_container+.info_product_container {
+ 	padding-top: 50px !important;
+ } */
+
+ /* section.info_product_container:first-of-type {
+ 	padding-top: 50px !important;
+ }
+
+ section.info_product_container:last-of-type {
+ 	padding-bottom: 50px !important;
+ } */
+
+ .info-item:last-child {
+ 	border-bottom: 1px solid #121212 !important;
+ }
+
  .hidden {
  	overflow: hidden;
  }
@@ -2020,4 +2036,26 @@
  	margin-top: 20px;
  	/* або твій відступ */
  	margin-bottom: 0;
+ }
+
+ .contacts_container_main {
+ 	max-width: 924rem;
+ 	padding: 40rem 0 80rem;
+ 	width: 90%;
+ 	margin: 0 auto;
+ }
+
+ .contacts_container_map {
+ 	width: 100%;
+ 	min-height: 500rem;
+ }
+
+ .contacts_page h3 {
+ 	padding-bottom: 20rem;
+ 	color: #0f283d;
+ 	font-weight: 500;
+ }
+
+ .contacts_page a {
+ 	color: #121212;
  }
